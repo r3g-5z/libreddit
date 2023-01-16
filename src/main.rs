@@ -163,6 +163,10 @@ async fn main() {
 		"X-Content-Type-Options" => "nosniff",
 		"X-Frame-Options" => "DENY",
 		"X-XSS-Protection" => "0",
+		"Origin-Agent-Cluster" => "?1",
+		"Permissions-Policy" => "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), bluetooth=(), browsing-topics=(), camera=(), clipboard-read=(), clipboard-write=(), display-capture=(), document-domain=(), encrypted-media=(), fullscreen=(), gamepad=(), geolocation=(), gyroscope=(), hid=(), idle-detection=(), interest-cohort=(), keyboard-map=(), local-fonts=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), speaker-selection=(), sync-xhr=(), usb=(), xr-spatial-tracking=()",
+		"Document-Policy" => "document-domain=?0, document-write=?0, popups=?0, js-profiling=?0",
+		"X-DNS-Prefetch-Control" => "off",
 		"Strict-Transport-Security" => "max-age=63072000; includeSubDomains; preload",
 		"Content-Security-Policy" => "default-src 'none'; font-src 'self'; script-src 'self' blob:; manifest-src 'self'; media-src 'self' data: blob: about:; style-src 'self' 'unsafe-inline'; base-uri 'none'; img-src 'self' data:; form-action 'self'; frame-ancestors 'none'; connect-src 'self'; worker-src blob:;"
 	};
