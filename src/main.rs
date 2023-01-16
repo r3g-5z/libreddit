@@ -138,20 +138,10 @@ async fn main() {
 				.action(ArgAction::Set)
 				.num_args(1),
 		)
-		.arg(
-			Arg::new("hsts")
-				.short('H')
-				.long("hsts")
-				.value_name("EXPIRE_TIME")
-				.help("HSTS header to tell browsers that this site should only be accessed over HTTPS")
-				.default_value("604800")
-				.num_args(1),
-		)
 		.get_matches();
 
 	let address = matches.get_one::<String>("address").unwrap();
 	let port = matches.get_one::<String>("port").unwrap();
-	let hsts = matches.get_one("hsts").map(|m: &String| m.as_str());
 
 	let listener = [address, ":", port].concat();
 
@@ -173,14 +163,9 @@ async fn main() {
 		"X-Content-Type-Options" => "nosniff",
 		"X-Frame-Options" => "DENY",
 		"X-XSS-Protection" => "0",
+		"Strict-Transport-Security" => "max-age=63072000; includeSubDomains; preload",
 		"Content-Security-Policy" => "default-src 'none'; font-src 'self'; script-src 'self' blob:; manifest-src 'self'; media-src 'self' data: blob: about:; style-src 'self' 'unsafe-inline'; base-uri 'none'; img-src 'self' data:; form-action 'self'; frame-ancestors 'none'; connect-src 'self'; worker-src blob:;"
 	};
-
-	if let Some(expire_time) = hsts {
-		if let Ok(val) = HeaderValue::from_str(&format!("max-age={}", expire_time)) {
-			app.default_headers.insert("Strict-Transport-Security", val);
-		}
-	}
 
 	// Read static files
 	app.at("/style.css").get(|_| style().boxed());
