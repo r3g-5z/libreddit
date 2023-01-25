@@ -168,7 +168,7 @@ async fn main() {
 		"Document-Policy" => "document-domain=?0, document-write=?0, popups=?0, js-profiling=?0",
 		"X-DNS-Prefetch-Control" => "off",
 		"Strict-Transport-Security" => "max-age=63072000; includeSubDomains; preload",
-		"Content-Security-Policy" => "default-src 'none'; font-src 'self'; script-src 'self' blob:; manifest-src 'self'; media-src 'self' data: blob: about:; style-src 'self' 'unsafe-inline'; base-uri 'none'; img-src 'self' data:; form-action 'self'; frame-ancestors 'none'; connect-src 'self'; worker-src blob:;"
+		"Content-Security-Policy" => "default-src 'none'; font-src 'self'; script-src 'self' blob:; manifest-src 'self'; media-src 'self' data: blob: about:; style-src 'self' 'unsafe-inline'; base-uri 'none'; img-src 'self' data:; form-action 'self'; frame-ancestors 'none'; connect-src 'self'; worker-src blob:; object-src 'none'; block-all-mixed-content; sandbox allow-same-origin allow-scripts allow-forms"
 	};
 
 	// Read static files
