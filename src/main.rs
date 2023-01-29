@@ -178,7 +178,7 @@ async fn main() {
 		.get(|_| resource(include_str!("../static/manifest.json"), "application/json", false).boxed());
 	app
 		.at("/robots.txt")
-		.get(|_| resource("User-agent: *\nCrawl-delay: 1\nDisallow: /u/\nDisallow: /user/", "text/plain", true).boxed());
+		.get(|_| resource("User-Agent: *\nCrawl-Delay: 1\nDisallow: /", "text/plain", true).boxed());
 	app.at("/favicon.ico").get(|_| favicon().boxed());
 	app.at("/logo.png").get(|_| pwa_logo().boxed());
 	app.at("/Inter.var.woff2").get(|_| font().boxed());
