@@ -190,6 +190,9 @@ async fn main() {
 	app
 		.at("/hls.min.js")
 		.get(|_| resource(include_str!("../static/hls.min.js"), "text/javascript", false).boxed());
+	app
+		.at("/hls.min.js.map")
+		.get(|_| resource(include_str!("../static/hls.min.js.map"), "application/json", false).boxed());
 
 	// Proxy media through Libreddit
 	app.at("/vid/:id/:size").get(|r| proxy(r, "https://v.redd.it/{id}/DASH_{size}").boxed());
